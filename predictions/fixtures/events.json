@@ -1,0 +1,82 @@
+[
+  {
+    "model": "predictions.event",
+    "pk": null,
+    "fields": {
+      "title": "Champions League Final",
+      "slug": "champions-league-final",
+      "location": "Wembley Stadium, London",
+      "date": "2024-06-01T19:00:00Z",
+      "description": "The Champions League final featuring the top two clubs in Europe battling for the trophy.",
+      "author": 1,
+      "created_on": "2024-01-01T10:00:00Z",
+      "updated_on": "2024-01-01T10:00:00Z",
+      "status": 1,
+      "excerpt": "Europe's most prestigious football match in 2024, held at the iconic Wembley Stadium."
+    }
+  },
+  {
+    "model": "predictions.event",
+    "pk": null,
+    "fields": {
+      "title": "Premier League: Liverpool vs Manchester United",
+      "slug": "premier-league-liverpool-vs-manchester-united",
+      "location": "Anfield, Liverpool",
+      "date": "2024-05-12T16:30:00Z",
+      "description": "A thrilling Premier League match between two of the biggest clubs in England.",
+      "author": 1,
+      "created_on": "2024-01-15T12:30:00Z",
+      "updated_on": "2024-01-15T12:30:00Z",
+      "status": 1,
+      "excerpt": "The highly anticipated rivalry match in the Premier League between Liverpool and Manchester United."
+    }
+  },
+  {
+    "model": "predictions.event",
+    "pk": null,
+    "fields": {
+      "title": "FA Cup Final",
+      "slug": "fa-cup-final",
+      "location": "Wembley Stadium, London",
+      "date": "2024-05-25T17:00:00Z",
+      "description": "The final of the FA Cup, the oldest football competition in the world.",
+      "author": 1,
+      "created_on": "2024-02-01T09:45:00Z",
+      "updated_on": "2024-02-01T09:45:00Z",
+      "status": 1,
+      "excerpt": "Watch the best teams in English football battle it out for the prestigious FA Cup trophy."
+    }
+  },
+  {
+    "model": "predictions.event",
+    "pk": null,
+    "fields": {
+      "title": "El Clásico: Real Madrid vs Barcelona",
+      "slug": "el-clasico-real-madrid-vs-barcelona",
+      "location": "Santiago Bernabéu, Madrid",
+      "date": "2024-04-21T19:45:00Z",
+      "description": "The legendary rivalry match between Real Madrid and Barcelona.",
+      "author": 1,
+      "created_on": "2024-03-10T11:15:00Z",
+      "updated_on": "2024-03-10T11:15:00Z",
+      "status": 1,
+      "excerpt": "The fiercest football rivalry in Spain, featuring some of the best players in the world."
+    }
+  },
+  {
+    "model": "predictions.event",
+    "pk": null,
+    "fields": {
+      "title": "World Cup Final",
+      "slug": "world-cup-final",
+      "location": "Lusail Iconic Stadium, Qatar",
+      "date": "2026-07-14T18:00:00Z",
+      "description": "The grand finale of the 2026 FIFA World Cup.",
+      "author": 1,
+      "created_on": "2025-08-01T15:30:00Z",
+      "updated_on": "2025-08-01T15:30:00Z",
+      "status": 1,
+      "excerpt": "The pinnacle of international football, where the world's best compete for the coveted World Cup."
+    }
+  }
+]
