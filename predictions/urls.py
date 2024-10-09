@@ -5,5 +5,6 @@ urlpatterns = [
     path('', views.EventList.as_view(), name='home'),
     path('event/<slug:slug>/', views.event_detail, name='event_detail'),
     path('about/', include('about.urls')),
-     path('my-predictions/', views.user_predictions, name='user_predictions'),
+    path('my-predictions/', views.user_predictions, name='user_predictions'),
+    path('leaderboard/', views.leaderboard, name='leaderboard'),
 ]

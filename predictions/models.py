@@ -20,7 +20,7 @@ class Event(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)
     excerpt = models.TextField(blank=True)
-    
+    result = models.CharField(max_length=10, blank=True)
 
     class Meta:
         ordering = ["-created_on"]
@@ -54,8 +54,9 @@ class Prediction(models.Model):
 
     event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name="predictions")
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    prediction = models.CharField(max_length=4, choices=PREDICTION_CHOICES)
+    prediction = models.CharField(max_length=10, choices=PREDICTION_CHOICES)
     created_on = models.DateTimeField(auto_now_add=True)
+    correct = models.BooleanField(default=False)
 
     class Meta:
         unique_together = ('event', 'user')

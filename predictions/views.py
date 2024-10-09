@@ -3,9 +3,11 @@ from django.views import generic
 from django.contrib import messages
 from .models import Event
 from .forms import CommentForm
+from django.db.models import Count, F, Case, When, IntegerField
 from .models import Event, Prediction
 from .forms import PredictionForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -76,3 +78,20 @@ def event_detail(request, slug):
             "existing_prediction": existing_prediction,
         },
     )
+
+def leaderboard(request):
+    users = User.objects.all()
+    leaderboard_data = []
+    for user in users:
+        total_predictions = Prediction.objects.filter(user=user).count()
+        correct_predictions = Prediction.objects.filter(
+            user=user,
+            prediction=F('event__result')
+        ).count()
+        leaderboard_data.append({
+            'username': user.username,
+            'total_predictions': total_predictions,
+            'correct_predictions': correct_predictions,
+        })
+    leaderboard_data = sorted(leaderboard_data, key=lambda x: x['correct_predictions'], reverse=True)
+    return render(request, 'predictions/leaderboard.html', {'leaderboard_data': leaderboard_data})

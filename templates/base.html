@@ -77,8 +77,9 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Leaderboard</a>
+              <a class="nav-link" href="{% url 'leaderboard' %}">Leaderboard</a>
             </li>
+
             {% if user.is_authenticated %}
             <li class="nav-item">
               <a

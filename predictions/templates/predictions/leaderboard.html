@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container mt-5">
+  <h2 class="text-center">Leaderboard</h2>
+  {% if leaderboard_data %}
+  <table class="table table-striped mt-4">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Username</th>
+        <th scope="col">Total Predictions</th>
+        <th scope="col">Correct Predictions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user_data in leaderboard_data %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ user_data.username }}</td>
+        <td>{{ user_data.total_predictions }}</td>
+        <td>{{ user_data.correct_predictions }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="text-center">No predictions available yet.</p>
+  {% endif %}
+</div>
+{% endblock %}
