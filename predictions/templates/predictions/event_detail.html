@@ -1,4 +1,6 @@
 {% extends 'base.html' %} {% block content %} {% load static %}
+<!--  -->
+{% load crispy_forms_tags %}
 
 <div class="masthead">
   <div class="container">
@@ -28,6 +30,69 @@
         <!-- The Event content goes inside the card-text. -->
         <!-- Use the | safe filter inside the template tags -->
         <p class="card-text">{{ event.description | safe }}</p>
+      </div>
+    </div>
+  </div>
+  <!-- Displaying count of comments -->
+  <div class="row">
+    <div class="col-12">
+      <strong class="text-secondary">
+        <i class="far fa-comments"></i> {{ comment_count }}
+      </strong>
+    </div>
+    <div class="col-12">
+      <hr />
+    </div>
+  </div>
+  <!-- Displaying Comments -->
+  <div class="row">
+    <div class="col-md-8 card mb-4 mt-3">
+      <h3>Comments:</h3>
+      <div class="card-body">
+        <!-- We want a for loop inside the empty control tags
+          to iterate through each comment in comments -->
+        {% for comment in comments %}
+        <div
+          class="p-3 mb-3 border rounded shadow-sm {% if not comment.active and comment.author == user %} bg-light{% elif not comment.active %} d-none{% endif %}"
+        >
+          <div class="d-flex justify-content-between">
+            <p class="fw-bold mb-1">{{ comment.author }}</p>
+            <small class="text-muted"
+              >{{ comment.created_on|date:"M d, Y" }}</small
+            >
+          </div>
+
+          <div class="mt-2" id="comment{{ comment.id }}">
+            <p>{{ comment.body | linebreaks }}</p>
+          </div>
+
+          {% if not comment.active and comment.author == user %}
+          <p class="text-warning mt-2">
+            <em>This comment is awaiting approval</em>
+          </p>
+          {% endif %}
+        </div>
+
+        <hr style="border: 1px solid #860c0c" />
+        <!-- Our for loop ends here -->
+        {% endfor %}
+      </div>
+    </div>
+    <!-- Creating New Comments -->
+    <div class="col-md-4 card mb-4 mt-3">
+      <div class="card-body">
+        {% if user.is_authenticated %}
+        <h3>Leave a comment:</h3>
+        <p>Posting as: {{ user.username }}</p>
+        <form id="commentForm" method="post" style="margin-top: 1.3em">
+          {{ comment_form | crispy }} {% csrf_token %}
+          <button id="submitButton" type="submit" class="btn btn-success">
+            Submit
+          </button>
+        </form>
+        {% else %}
+        <p>Log in to leave a comment</p>
+        {% endif %}
       </div>
     </div>
   </div>

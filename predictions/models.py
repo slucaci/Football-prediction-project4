@@ -30,11 +30,12 @@ class Event(models.Model):
     
 class Comment(models.Model):
     event = models.ForeignKey('Event', on_delete=models.CASCADE, related_name="comments")
+    author = models.ForeignKey(User, on_delete=models.CASCADE,blank=True, null=True)
     name = models.CharField(max_length=80, blank=True)
     email = models.EmailField(max_length=80, blank=True)
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
-    active = models.BooleanField(default=True)
+    active = models.BooleanField(default=False)
 
 
     class Meta:

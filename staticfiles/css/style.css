@@ -146,25 +146,21 @@ body {
   color: white;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .hero-section h1 {
-    font-size: 2.5rem;
-  }
+.btn-signup {
+  background-color: #66cc99;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  float: right;
+}
 
-  .hero-section p {
-    font-size: 1rem;
-  }
-
-  .card-title {
-    font-size: 1.25rem;
-  }
-
-  .image-container {
-    height: 150px;
-  }
-
-  .pagination {
-    margin-bottom: 2rem;
-  }
+.btn-signup:hover {
+  background-color: #55aa88;
+  color: #ffffff;
 }
