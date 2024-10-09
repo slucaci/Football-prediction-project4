@@ -1,82 +1,322 @@
 [
   {
     "model": "predictions.event",
-    "pk": null,
+    "pk": 1,
     "fields": {
-      "title": "Champions League Final",
-      "slug": "champions-league-final",
-      "location": "Wembley Stadium, London",
-      "date": "2024-06-01T19:00:00Z",
-      "description": "The Champions League final featuring the top two clubs in Europe battling for the trophy.",
+      "title": "Manchester United vs Liverpool",
+      "slug": "manchester-united-vs-liverpool",
+      "location": "Old Trafford, Manchester",
+      "date": "2024-06-15T16:00:00Z",
+      "description": "A heated rivalry between Manchester United and Liverpool.",
       "author": 1,
-      "created_on": "2024-01-01T10:00:00Z",
-      "updated_on": "2024-01-01T10:00:00Z",
+      "created_on": "2023-05-01T10:00:00Z",
+      "updated_on": "2023-05-02T12:00:00Z",
       "status": 1,
-      "excerpt": "Europe's most prestigious football match in 2024, held at the iconic Wembley Stadium."
+      "excerpt": "A thrilling encounter between two Premier League giants."
     }
   },
   {
     "model": "predictions.event",
-    "pk": null,
+    "pk": 2,
     "fields": {
-      "title": "Premier League: Liverpool vs Manchester United",
-      "slug": "premier-league-liverpool-vs-manchester-united",
-      "location": "Anfield, Liverpool",
-      "date": "2024-05-12T16:30:00Z",
-      "description": "A thrilling Premier League match between two of the biggest clubs in England.",
+      "title": "Barcelona vs Real Madrid",
+      "slug": "barcelona-vs-real-madrid",
+      "location": "Camp Nou, Barcelona",
+      "date": "2024-10-03T20:00:00Z",
+      "description": "El Clásico, one of the biggest matches in world football.",
       "author": 1,
-      "created_on": "2024-01-15T12:30:00Z",
-      "updated_on": "2024-01-15T12:30:00Z",
+      "created_on": "2023-06-10T10:30:00Z",
+      "updated_on": "2023-06-11T11:00:00Z",
       "status": 1,
-      "excerpt": "The highly anticipated rivalry match in the Premier League between Liverpool and Manchester United."
+      "excerpt": "The ultimate rivalry in Spanish football."
     }
   },
   {
     "model": "predictions.event",
-    "pk": null,
+    "pk": 3,
     "fields": {
-      "title": "FA Cup Final",
-      "slug": "fa-cup-final",
-      "location": "Wembley Stadium, London",
-      "date": "2024-05-25T17:00:00Z",
-      "description": "The final of the FA Cup, the oldest football competition in the world.",
+      "title": "Chelsea vs Arsenal",
+      "slug": "chelsea-vs-arsenal",
+      "location": "Stamford Bridge, London",
+      "date": "2024-08-20T18:30:00Z",
+      "description": "London derby between Chelsea and Arsenal.",
       "author": 1,
-      "created_on": "2024-02-01T09:45:00Z",
-      "updated_on": "2024-02-01T09:45:00Z",
+      "created_on": "2023-07-01T14:00:00Z",
+      "updated_on": "2023-07-02T10:00:00Z",
       "status": 1,
-      "excerpt": "Watch the best teams in English football battle it out for the prestigious FA Cup trophy."
+      "excerpt": "A classic London derby."
     }
   },
   {
     "model": "predictions.event",
-    "pk": null,
+    "pk": 4,
     "fields": {
-      "title": "El Clásico: Real Madrid vs Barcelona",
-      "slug": "el-clasico-real-madrid-vs-barcelona",
-      "location": "Santiago Bernabéu, Madrid",
-      "date": "2024-04-21T19:45:00Z",
-      "description": "The legendary rivalry match between Real Madrid and Barcelona.",
+      "title": "Paris Saint-Germain vs Marseille",
+      "slug": "paris-saint-germain-vs-marseille",
+      "location": "Parc des Princes, Paris",
+      "date": "2024-09-10T19:00:00Z",
+      "description": "Le Classique, a fierce rivalry in French football.",
       "author": 1,
-      "created_on": "2024-03-10T11:15:00Z",
-      "updated_on": "2024-03-10T11:15:00Z",
+      "created_on": "2023-05-15T12:00:00Z",
+      "updated_on": "2023-05-16T12:00:00Z",
       "status": 1,
-      "excerpt": "The fiercest football rivalry in Spain, featuring some of the best players in the world."
+      "excerpt": "The biggest match in Ligue 1."
     }
   },
   {
     "model": "predictions.event",
-    "pk": null,
+    "pk": 5,
     "fields": {
-      "title": "World Cup Final",
-      "slug": "world-cup-final",
-      "location": "Lusail Iconic Stadium, Qatar",
-      "date": "2026-07-14T18:00:00Z",
-      "description": "The grand finale of the 2026 FIFA World Cup.",
+      "title": "Bayern Munich vs Borussia Dortmund",
+      "slug": "bayern-munich-vs-borussia-dortmund",
+      "location": "Allianz Arena, Munich",
+      "date": "2024-11-22T16:30:00Z",
+      "description": "Der Klassiker, the biggest match in German football.",
       "author": 1,
-      "created_on": "2025-08-01T15:30:00Z",
-      "updated_on": "2025-08-01T15:30:00Z",
+      "created_on": "2023-05-05T12:00:00Z",
+      "updated_on": "2023-05-06T12:00:00Z",
       "status": 1,
-      "excerpt": "The pinnacle of international football, where the world's best compete for the coveted World Cup."
+      "excerpt": "A fierce contest between Germany’s top clubs."
+    }
+  },
+  {
+    "model": "predictions.event",
+    "pk": 6,
+    "fields": {
+      "title": "Juventus vs AC Milan",
+      "slug": "juventus-vs-ac-milan",
+      "location": "Allianz Stadium, Turin",
+      "date": "2024-07-25T20:45:00Z",
+      "description": "A top-tier clash in Italian Serie A.",
+      "author": 1,
+      "created_on": "2023-04-30T12:00:00Z",
+      "updated_on": "2023-05-01T12:00:00Z",
+      "status": 1,
+      "excerpt": "A battle between two Italian giants."
+    }
+  },
+  {
+    "model": "predictions.event",
+    "pk": 7,
+    "fields": {
+      "title": "Inter Milan vs Napoli",
+      "slug": "inter-milan-vs-napoli",
+      "location": "San Siro, Milan",
+      "date": "2024-12-10T18:45:00Z",
+      "description": "A thrilling encounter between two Serie A contenders.",
+      "author": 1,
+      "created_on": "2023-05-20T10:00:00Z",
+      "updated_on": "2023-05-21T10:00:00Z",
+      "status": 1,
+      "excerpt": "A key match in the race for the Serie A title."
+    }
+  },
+  {
+    "model": "predictions.event",
+    "pk": 8,
+    "fields": {
+      "title": "Manchester City vs Tottenham Hotspur",
+      "slug": "manchester-city-vs-tottenham-hotspur",
+      "location": "Etihad Stadium, Manchester",
+      "date": "2024-06-08T17:00:00Z",
+      "description": "Premier League clash between title contenders.",
+      "author": 1,
+      "created_on": "2023-06-01T12:00:00Z",
+      "updated_on": "2023-06-02T12:00:00Z",
+      "status": 1,
+      "excerpt": "A thrilling Premier League contest."
+    }
+  },
+  {
+    "model": "predictions.event",
+    "pk": 9,
+    "fields": {
+      "title": "Atletico Madrid vs Sevilla",
+      "slug": "atletico-madrid-vs-sevilla",
+      "location": "Wanda Metropolitano, Madrid",
+      "date": "2024-10-05T19:00:00Z",
+      "description": "A high-stakes La Liga match.",
+      "author": 1,
+      "created_on": "2023-07-15T12:00:00Z",
+      "updated_on": "2023-07-16T12:00:00Z",
+      "status": 1,
+      "excerpt": "An exciting La Liga contest."
+    }
+  },
+  {
+    "model": "predictions.event",
+    "pk": 10,
+    "fields": {
+      "title": "Lyon vs Monaco",
+      "slug": "lyon-vs-monaco",
+      "location": "Groupama Stadium, Lyon",
+      "date": "2024-09-28T20:00:00Z",
+      "description": "Ligue 1 clash between two top French sides.",
+      "author": 1,
+      "created_on": "2023-08-05T12:00:00Z",
+      "updated_on": "2023-08-06T12:00:00Z",
+      "status": 1,
+      "excerpt": "An intense match between two Ligue 1 teams."
+    }
+  },
+  {
+    "model": "predictions.event",
+    "pk": 11,
+    "fields": {
+      "title": "Real Sociedad vs Athletic Bilbao",
+      "slug": "real-sociedad-vs-athletic-bilbao",
+      "location": "Reale Arena, San Sebastián",
+      "date": "2024-11-01T18:30:00Z",
+      "description": "Basque Derby in La Liga.",
+      "author": 1,
+      "created_on": "2023-06-10T10:00:00Z",
+      "updated_on": "2023-06-11T12:00:00Z",
+      "status": 1,
+      "excerpt": "One of the most intense derbies in Spanish football."
+    }
+  },
+  {
+    "model": "predictions.event",
+    "pk": 12,
+    "fields": {
+      "title": "Leeds United vs Newcastle United",
+      "slug": "leeds-united-vs-newcastle-united",
+      "location": "Elland Road, Leeds",
+      "date": "2024-07-18T19:00:00Z",
+      "description": "Premier League clash between two historic clubs.",
+      "author": 1,
+      "created_on": "2023-05-30T12:00:00Z",
+      "updated_on": "2023-05-31T10:00:00Z",
+      "status": 1,
+      "excerpt": "An exciting Premier League fixture."
+    }
+  },
+  {
+    "model": "predictions.event",
+    "pk": 13,
+    "fields": {
+      "title": "AC Milan vs AS Roma",
+      "slug": "ac-milan-vs-as-roma",
+      "location": "San Siro, Milan",
+      "date": "2024-11-15T20:45:00Z",
+      "description": "A top-tier Serie A clash between two historic Italian clubs.",
+      "author": 1,
+      "created_on": "2023-06-20T11:00:00Z",
+      "updated_on": "2023-06-21T10:00:00Z",
+      "status": 1,
+      "excerpt": "A key Serie A matchup."
+    }
+  },
+  {
+    "model": "predictions.event",
+    "pk": 14,
+    "fields": {
+      "title": "Everton vs West Ham United",
+      "slug": "everton-vs-west-ham-united",
+      "location": "Goodison Park, Liverpool",
+      "date": "2024-10-22T16:00:00Z",
+      "description": "Premier League encounter between Everton and West Ham.",
+      "author": 1,
+      "created_on": "2023-07-10T10:00:00Z",
+      "updated_on": "2023-07-11T11:00:00Z",
+      "status": 1,
+      "excerpt": "A competitive Premier League match."
+    }
+  },
+  {
+    "model": "predictions.event",
+    "pk": 15,
+    "fields": {
+      "title": "Lazio vs Fiorentina",
+      "slug": "lazio-vs-fiorentina",
+      "location": "Stadio Olimpico, Rome",
+      "date": "2024-12-03T18:00:00Z",
+      "description": "An exciting Serie A fixture between Lazio and Fiorentina.",
+      "author": 1,
+      "created_on": "2023-06-25T12:00:00Z",
+      "updated_on": "2023-06-26T12:00:00Z",
+      "status": 1,
+      "excerpt": "Two Italian teams in a thrilling match."
+    }
+  },
+  {
+    "model": "predictions.event",
+    "pk": 16,
+    "fields": {
+      "title": "Tottenham Hotspur vs Arsenal",
+      "slug": "tottenham-hotspur-vs-arsenal",
+      "location": "Tottenham Hotspur Stadium, London",
+      "date": "2024-05-30T12:45:00Z",
+      "description": "The North London Derby.",
+      "author": 1,
+      "created_on": "2023-07-10T12:00:00Z",
+      "updated_on": "2023-07-11T12:00:00Z",
+      "status": 1,
+      "excerpt": "A fiercely contested North London Derby."
+    }
+  },
+  {
+    "model": "predictions.event",
+    "pk": 17,
+    "fields": {
+      "title": "Sevilla vs Villarreal",
+      "slug": "sevilla-vs-villarreal",
+      "location": "Ramon Sanchez Pizjuan Stadium, Seville",
+      "date": "2024-08-20T18:30:00Z",
+      "description": "La Liga match between Sevilla and Villarreal.",
+      "author": 1,
+      "created_on": "2023-06-20T12:00:00Z",
+      "updated_on": "2023-06-21T10:00:00Z",
+      "status": 1,
+      "excerpt": "A key match in the La Liga season."
+    }
+  },
+  {
+    "model": "predictions.event",
+    "pk": 18,
+    "fields": {
+      "title": "Napoli vs Juventus",
+      "slug": "napoli-vs-juventus",
+      "location": "Stadio Diego Armando Maradona, Naples",
+      "date": "2024-06-10T20:00:00Z",
+      "description": "A thrilling Serie A battle between Napoli and Juventus.",
+      "author": 1,
+      "created_on": "2023-05-12T12:00:00Z",
+      "updated_on": "2023-05-13T12:00:00Z",
+      "status": 1,
+      "excerpt": "A battle between two top Italian clubs."
+    }
+  },
+  {
+    "model": "predictions.event",
+    "pk": 19,
+    "fields": {
+      "title": "Leicester City vs Manchester City",
+      "slug": "leicester-city-vs-manchester-city",
+      "location": "King Power Stadium, Leicester",
+      "date": "2024-09-10T15:00:00Z",
+      "description": "Premier League action between Leicester and Manchester City.",
+      "author": 1,
+      "created_on": "2023-06-15T12:00:00Z",
+      "updated_on": "2023-06-16T12:00:00Z",
+      "status": 1,
+      "excerpt": "An important Premier League fixture."
+    }
+  },
+  {
+    "model": "predictions.event",
+    "pk": 20,
+    "fields": {
+      "title": "Brighton vs Southampton",
+      "slug": "brighton-vs-southampton",
+      "location": "Amex Stadium, Brighton",
+      "date": "2024-07-18T17:30:00Z",
+      "description": "Premier League contest between Brighton and Southampton.",
+      "author": 1,
+      "created_on": "2023-05-25T12:00:00Z",
+      "updated_on": "2023-05-26T12:00:00Z",
+      "status": 1,
+      "excerpt": "A thrilling mid-table Premier League clash."
     }
   }
 ]
