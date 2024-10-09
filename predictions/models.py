@@ -44,3 +44,22 @@ class Comment(models.Model):
     def __str__(self):
         return f"Comment {self.body} by {self.author}"
     
+
+class Prediction(models.Model):
+    PREDICTION_CHOICES = (
+        ('X1', 'Team 1 Wins'),
+        ('DRAW', 'Draw'),
+        ('X2', 'Team 2 Wins'),
+    )
+
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name="predictions")
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    prediction = models.CharField(max_length=4, choices=PREDICTION_CHOICES)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('event', 'user')
+
+    def __str__(self):
+        return f"{self.user.username} predicted {self.get_prediction_display()} for {self.event.title}"
+    

@@ -22,7 +22,24 @@
     </div>
   </div>
 </div>
-
+{% if existing_prediction %}
+<p class="text-danger bg-light p-3 mb-2 fw-bold">
+  You predicted: {{ existing_prediction.get_prediction_display }}
+</p>
+{% else %}
+<div class="card mt-4">
+  <div class="card-body">
+    <h5 class="card-title">Make Your Prediction</h5>
+    <form method="POST">
+      {% csrf_token %} {{ prediction_form.as_p }}
+      <button type="submit" name="submit_prediction" class="btn btn-primary">
+        Submit Prediction
+      </button>
+    </form>
+  </div>
+</div>
+<div class="mt-4"></div>
+{% endif %}
 <div class="container">
   <div class="row">
     <div class="col card mb-4 mt-3 left top">
