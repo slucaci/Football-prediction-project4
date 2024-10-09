@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .models import About
 
 # Create your views here.
-def about_me(request):
-    return HttpResponse("This would be the about page")
+def about_view(request):
+    about_info = About.objects.first()
+    return render(request, 'about/about.html', {'about_info': about_info})

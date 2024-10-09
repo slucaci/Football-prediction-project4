@@ -29,16 +29,17 @@ class Event(models.Model):
         return f"The title of this event is {self.title}"
     
 class Comment(models.Model):
-    post = models.ForeignKey(
-        Event, on_delete=models.CASCADE, related_name="comments")
-    author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="commenter")
+    event = models.ForeignKey('Event', on_delete=models.CASCADE, related_name="comments")
+    name = models.CharField(max_length=80, blank=True)
+    email = models.EmailField(max_length=80, blank=True)
     body = models.TextField()
-    approved = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=True)
+
 
     class Meta:
         ordering = ["created_on"]
 
     def __str__(self):
         return f"Comment {self.body} by {self.author}"
+    
