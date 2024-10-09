@@ -4,10 +4,11 @@
   <div class="container">
     <div class="row g-0">
       <div class="col-md-6 masthead-text">
-        <!-- Post title goes in these h1 tags -->
+        <!-- Event title goes in these h1 tags -->
         <h1 class="post-title">{{ event.title }}</h1>
-        <!-- Post author goes before the | the post's created date goes after -->
-        <p class="post-subtitle">{{ event.created_on }}</p>
+        <p>{{event.location}}</p>
+        <!-- Event author goes before the | the event's created date goes after -->
+        <p class="post-subtitle">{{ event.date}}</p>
       </div>
       <div class="d-none d-md-block col-md-6 masthead-image">
         <img
@@ -24,7 +25,7 @@
   <div class="row">
     <div class="col card mb-4 mt-3 left top">
       <div class="card-body">
-        <!-- The post content goes inside the card-text. -->
+        <!-- The Event content goes inside the card-text. -->
         <!-- Use the | safe filter inside the template tags -->
         <p class="card-text">{{ event.description | safe }}</p>
       </div>

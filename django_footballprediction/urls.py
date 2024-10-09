@@ -21,6 +21,7 @@ from about import views as about_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("predictions.urls"), name="predictions-urls"),
+    path("accounts/", include("allauth.urls")),
     path('summernote/', include('django_summernote.urls')),
     path('about/', include('about.urls')),
 ]
