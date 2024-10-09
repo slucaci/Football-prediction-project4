@@ -23,7 +23,7 @@
   </div>
 </div>
 {% if existing_prediction %}
-<p class="text-danger bg-light p-3 mb-2 fw-bold">
+<p class="alert alert-info text-center">
   You predicted: {{ existing_prediction.get_prediction_display }}
 </p>
 {% else %}
@@ -51,73 +51,172 @@
     </div>
   </div>
   <!-- Displaying count of comments -->
-  <div class="row">
-    <div class="col-12">
-      <strong class="text-secondary">
-        <i class="far fa-comments"></i> {{ comment_count }}
-      </strong>
-    </div>
-    <div class="col-12">
-      <hr />
-    </div>
-  </div>
-  <!-- Displaying Comments -->
-  <div class="row">
-    <div class="col-md-8 card mb-4 mt-3">
-      <h3>Comments:</h3>
-      <div class="card-body">
-        <!-- We want a for loop inside the empty control tags
-          to iterate through each comment in comments -->
-        {% for comment in comments %}
-        <div
-          class="p-3 mb-3 border rounded shadow-sm {% if not comment.active and comment.author == user %} bg-light{% elif not comment.active %} d-none{% endif %}"
-        >
-          <div class="d-flex justify-content-between">
-            <p class="fw-bold mb-1">{{ comment.author }}</p>
-            <small class="text-muted"
-              >{{ comment.created_on|date:"M d, Y" }}</small
-            >
-          </div>
-
-          <div class="mt-2" id="comment{{ comment.id }}">
-            <p>{{ comment.body | linebreaks }}</p>
-          </div>
-
-          {% if not comment.active and comment.author == user %}
-          <p class="text-warning mt-2">
-            <em>This comment is awaiting approval</em>
-          </p>
-          {% endif %}
-        </div>
-
-        <hr style="border: 1px solid #860c0c" />
-        <!-- Our for loop ends here -->
-        {% endfor %}
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-12">
+        <strong class="text-secondary">
+          <i class="far fa-comments"></i> {{ comment_count }}
+        </strong>
+      </div>
+      <div class="col-12">
+        <hr />
       </div>
     </div>
-    <!-- Creating New Comments -->
-    <div class="col-md-4 card mb-4 mt-3">
-      <div class="card-body">
-        {% if user.is_authenticated %}
-        <h3>Leave a comment:</h3>
-        <p>Posting as: {{ user.username }}</p>
-        <form id="commentForm" method="post" style="margin-top: 1.3em">
-          {{ comment_form | crispy }} {% csrf_token %}
-          <button
-            id="submitButton"
-            name="submit_comment"
-            type="submit"
-            class="btn btn-success"
+    <!-- Displaying Comments -->
+    <div class="row">
+      <div class="col-md-8 card mb-4 mt-3">
+        <h3>Comments:</h3>
+        <div class="card-body">
+          <!-- We want a for loop inside the empty control tags
+          to iterate through each comment in comments -->
+          {% for comment in comments %}
+          <div
+            class="p-3 mb-3 border rounded shadow-sm {% if not comment.active and comment.author == user %} bg-light{% elif not comment.active %} d-none{% endif %}"
           >
-            Submit
-          </button>
-        </form>
-        {% else %}
-        <p>Log in to leave a comment</p>
-        {% endif %}
+            <div class="d-flex justify-content-between">
+              <p class="fw-bold mb-1">{{ comment.author }}</p>
+              <small class="text-muted"
+                >{{ comment.created_on|date:"M d, Y" }}</small
+              >
+            </div>
+
+            <div class="mt-2" id="comment{{ comment.id }}">
+              <p>{{ comment.body | linebreaks }}</p>
+            </div>
+
+            {% if not comment.active and comment.author == user %}
+            <p class="text-warning mt-2">
+              <em>This comment is awaiting approval</em>
+            </p>
+            {% endif %} {% if user.is_authenticated and comment.author == user%}
+
+            <div class="d-flex justify-content-end">
+              <!-- Edit Button triggers collapse -->
+              <button
+                comment_id="{{ comment.id }}"
+                type="button"
+                class="btn btn-success btn-sm"
+                data-bs-toggle="collapse"
+                data-bs-target="#editForm{{ comment.id }}"
+                aria-expanded="false"
+                aria-controls="editForm{{ comment.id }}"
+              >
+                Edit
+              </button>
+
+              <!-- Delete Form -->
+              <div class="d-flex justify-content-end">
+                <!-- Delete Button triggers the modal instead of submitting the form -->
+                <button
+                  class="btn btn-delete btn-danger btn-sm"
+                  comment_id="{{ comment.id }}"
+                  data-slug="{{ event.slug }}"
+                  type="submit"
+                  data-bs-toggle="modal"
+                  data-bs-target="#deleteModal"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+            <div class="collapse mt-3" id="editForm{{ comment.id }}">
+              <div class="card card-body">
+                <form
+                  action="{% url 'edit_comment' slug=event.slug comment_id=comment.id %}"
+                  method="POST"
+                >
+                  {% csrf_token %}
+                  <textarea name="body" class="form-control" rows="3">
+{{ comment.body }}</textarea
+                  >
+                  <div class="mt-3">
+                    <button type="submit" class="btn btn-success btn-sm">
+                      Update Comment
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-danger btn-sm"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#editForm{{ comment.id }}"
+                      aria-expanded="false"
+                      aria-controls="editForm{{ comment.id }}"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            {% endif %}
+          </div>
+
+          <hr style="border: 1px solid #860c0c" />
+          <!-- Our for loop ends here -->
+          {% endfor %}
+        </div>
+      </div>
+      <!-- Creating New Comments -->
+      <div class="col-md-4 card mb-4 mt-3">
+        <div class="card-body">
+          {% if user.is_authenticated %}
+          <h3>Leave a comment:</h3>
+          <p>Posting as: {{ user.username }}</p>
+          <form id="commentForm" method="post" style="margin-top: 1.3em">
+            {{ comment_form | crispy }} {% csrf_token %}
+            <button
+              id="submitButton"
+              name="submit_comment"
+              type="submit"
+              class="btn btn-success"
+            >
+              Submit
+            </button>
+          </form>
+          {% else %}
+          <p>Log in to leave a comment</p>
+          {% endif %}
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-{% endblock content %}
+<!-- Delete confirmation modal -->
+<div
+  class="modal fade"
+  id="deleteModal"
+  tabindex="-1"
+  aria-labelledby="deleteModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Delete comment?</h5>
+        <button
+          type="submit"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete your comment? This action cannot be
+        undone.
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <form id="deleteCommentForm" method="post">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %} {% block extras %}
+<script src="{% static 'js/comments.js' %}"></script>
+{% endblock %}

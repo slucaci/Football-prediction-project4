@@ -1,13 +1,15 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views import generic
 from django.contrib import messages
 from .models import Event
 from .forms import CommentForm
 from django.db.models import Count, F, Case, When, IntegerField
-from .models import Event, Prediction
+from .models import Event, Prediction, Comment
 from .forms import PredictionForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.http import HttpResponseRedirect
+
 
 # Create your views here.
 
@@ -95,3 +97,40 @@ def leaderboard(request):
         })
     leaderboard_data = sorted(leaderboard_data, key=lambda x: x['correct_predictions'], reverse=True)
     return render(request, 'predictions/leaderboard.html', {'leaderboard_data': leaderboard_data})
+
+def edit_comment(request, slug, comment_id):
+    """
+    Allow users to edit their own comments.
+    """
+    comment = get_object_or_404(Comment, id=comment_id)
+    
+    # Only handle POST requests
+    if request.method == "POST":
+        
+        comment_form = CommentForm(data=request.POST, instance=comment)
+        if comment_form.is_valid() and comment.author == request.user:
+            comment.active = False  # Set comment inactive after edit, waiting for approval
+            comment.save()
+            messages.success(request, "Comment updated and awaiting approval!")
+        else:
+            messages.error(request, "Error updating comment.")
+        return HttpResponseRedirect(reverse('event_detail', args=[slug]))
+
+    # If the request method is not POST, redirect back to the event detail page
+    return HttpResponseRedirect(reverse('event_detail', args=[slug]))
+
+
+def delete_comment(request, slug, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id, event__slug=slug)
+
+    if comment.author != request.user:
+        messages.error(request, "You can only delete your own comments.")
+        return HttpResponseRedirect(reverse('event_detail', args=[slug]))
+
+    if request.method == "POST":
+        comment.delete()
+        messages.success(request, "Comment deleted successfully!")
+    else:
+        messages.error(request, "Invalid request method.")
+    
+    return HttpResponseRedirect(reverse('event_detail', args=[slug]))
