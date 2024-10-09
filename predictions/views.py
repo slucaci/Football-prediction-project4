@@ -1,9 +1,9 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
+from django.views import generic
+from .models import Event
 
 # Create your views here.
 
-def index(request):
-    if request.method == "POST":
-        return HttpResponse("You must have POSTed something")
-    else:
-        return HttpResponse(request.method)
+class EventList(generic.ListView):
+    queryset = Event.objects.all()
+    template_name = "event_list.html"
