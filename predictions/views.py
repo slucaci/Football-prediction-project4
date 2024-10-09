@@ -5,13 +5,23 @@ from .models import Event
 from .forms import CommentForm
 from .models import Event, Prediction
 from .forms import PredictionForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+
+
+@login_required
+def user_predictions(request):
+    predictions = Prediction.objects.filter(user=request.user)
+
+    return render(request, 'predictions/user_predictions.html', {'predictions': predictions})
+
 
 class EventList(generic.ListView):
     queryset = Event.objects.filter(status=1)
     template_name = "predictions/index.html"
     paginate_by = 6
+
 
 def event_detail(request, slug):
 

@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="container mt-4">
+  <h2>Your Predictions</h2>
+  <table class="table table-bordered table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Event</th>
+        <th scope="col">Prediction</th>
+        <th scope="col">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for prediction in predictions %}
+      <tr>
+        <td>
+          <a href="{% url 'event_detail' slug=prediction.event.slug %}"
+            >{{ prediction.event.title }}</a
+          >
+        </td>
+        <td>{{ prediction.get_prediction_display }}</td>
+        <td>{{ prediction.created_on}}</td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="3" class="text-center">
+          You have not made any predictions yet.
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}
