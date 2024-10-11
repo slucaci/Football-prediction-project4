@@ -25,10 +25,10 @@ class Event(models.Model):
     result = models.CharField(max_length=10, blank=True)
 
     class Meta:
-        ordering = ["-created_on"]
+        ordering = ["date"]
 
     def __str__(self):
-        return f"The title of this event is {self.title}"
+        return f"{self.title}"
     
 class Comment(models.Model):
     event = models.ForeignKey('Event', on_delete=models.CASCADE, related_name="comments")
