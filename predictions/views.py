@@ -17,12 +17,14 @@ from django.utils import timezone
 
 @login_required
 def user_predictions(request):
+    """This view displays a list of predictions made by the current user."""
     predictions = Prediction.objects.filter(user=request.user)
 
     return render(request, 'predictions/user_predictions.html', {'predictions': predictions})
 
 
 class EventList(generic.ListView):
+    """This view displays a list of events."""
     queryset = Event.objects.filter(status=1)
     queryset.filter(date__lt=timezone.now()).update(status=0)
     template_name = "predictions/index.html"
@@ -30,6 +32,7 @@ class EventList(generic.ListView):
 
 
 def event_detail(request, slug):
+    """This view displays the details of a single event."""
 
     queryset = Event.objects.filter(status=1)
     event = get_object_or_404(queryset, slug=slug)
@@ -84,6 +87,7 @@ def event_detail(request, slug):
     )
 
 def leaderboard(request):
+    """This view displays a leaderboard of users based on the number of correct predictions."""
     users = User.objects.exclude(username='admin')
     leaderboard_data = []
     for user in users:
@@ -123,6 +127,7 @@ def edit_comment(request, slug, comment_id):
 
 
 def delete_comment(request, slug, comment_id):
+    """This view allows users to delete their own comments."""
     comment = get_object_or_404(Comment, id=comment_id, event__slug=slug)
 
     if comment.author != request.user:
