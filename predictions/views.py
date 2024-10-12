@@ -82,7 +82,7 @@ def event_detail(request, slug):
     )
 
 def leaderboard(request):
-    users = User.objects.all()
+    users = User.objects.exclude(username='admin')
     leaderboard_data = []
     for user in users:
         total_predictions = Prediction.objects.filter(user=user).count()
