@@ -60,7 +60,7 @@ class Prediction(models.Model):
         ('X2', 'Team 2 Wins'),
     )
 
-    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name="predictions")
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name="predictions") 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     prediction = models.CharField(max_length=10, choices=PREDICTION_CHOICES)
     created_on = models.DateTimeField(auto_now_add=True)

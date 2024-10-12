@@ -10,14 +10,17 @@
     <title>Football Prediction Platform</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <!-- Google fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
       rel="stylesheet"
     />
+    <!-- Google fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap"
       rel="stylesheet"
     />
+    <!--  Font Awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -29,6 +32,7 @@
       integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
       crossorigin="anonymous"
     />
+    <!-- Static css files -->
     <link href="{% static 'css/style.css' %}" rel="stylesheet" />
   </head>
 
@@ -142,7 +146,7 @@
         </div>
       </div>
     </div>
-
+    <!-- If user is_authenticated, a message will be dispalyed on the top right cornder of the screen. -->
     <main class="flex-shrink-0 main-bg">
       {% if user.is_authenticated %}
       <p class="text-end m-3">

@@ -25,8 +25,8 @@ def user_predictions(request):
 
 class EventList(generic.ListView):
     """This view displays a list of events."""
-    queryset = Event.objects.filter(status=1)
-    queryset.filter(date__lt=timezone.now()).update(status=0)
+    queryset = Event.objects.filter(status=1) # This line of code will filter events that have a status of 1(Published) 
+    queryset.filter(date__lt=timezone.now()).update(status=0) # This line of code will update the status of events that have already occurred to 0(https://stackoverflow.com/questions/24211293/django-queryset-filter-gt-lt-gte-lte-returns-full-object-list) used stackoverflow to help me with this line of code
     template_name = "predictions/index.html"
     paginate_by = 6
 
@@ -34,10 +34,10 @@ class EventList(generic.ListView):
 def event_detail(request, slug):
     """This view displays the details of a single event."""
 
-    queryset = Event.objects.filter(status=1)
-    event = get_object_or_404(queryset, slug=slug)
+    queryset = Event.objects.filter(status=1) # This line of code will filter events that have a status of 1(Published)
+    event = get_object_or_404(queryset, slug=slug) 
 
-    comments = event.comments.all().order_by("-created_on")
+    comments = event.comments.all().order_by("-created_on") # This line of code will order the comments by the created_on field in descending order
     comment_count = event.comments.filter(active=True).count()
 
     if request.method == "POST" and 'submit_comment' in request.POST:
@@ -53,7 +53,7 @@ def event_detail(request, slug):
         comment_form = CommentForm()
 
     try:
-        existing_prediction = Prediction.objects.get(event=event, user=request.user)
+        existing_prediction = Prediction.objects.get(event=event, user=request.user) 
         prediction_form = PredictionForm(instance=existing_prediction)
     except Prediction.DoesNotExist:
         existing_prediction = None
@@ -61,12 +61,12 @@ def event_detail(request, slug):
 
     if request.method == 'POST' and 'submit_prediction' in request.POST:
         if existing_prediction:
-            prediction_form = PredictionForm(request.POST, instance=existing_prediction)
+            prediction_form = PredictionForm(request.POST, instance=existing_prediction) 
         else:
             prediction_form = PredictionForm(request.POST)
 
         if prediction_form.is_valid():
-            prediction = prediction_form.save(commit=False)
+            prediction = prediction_form.save(commit=False) 
             prediction.user = request.user
             prediction.event = event
             prediction.save()
@@ -88,19 +88,19 @@ def event_detail(request, slug):
 
 def leaderboard(request):
     """This view displays a leaderboard of users based on the number of correct predictions."""
-    users = User.objects.exclude(username='admin')
-    leaderboard_data = []
+    users = User.objects.exclude(username='admin') # This line of code will exclude the admin user from the leaderboard
+    leaderboard_data = [] 
     for user in users:
-        total_predictions = Prediction.objects.filter(user=user).count()
+        total_predictions = Prediction.objects.filter(user=user).count() # This line of code will count the total number of predictions made by a user
         correct_predictions = Prediction.objects.filter(
             user=user,
             prediction=F('event__result')
-        ).count()
+        ).count() # This line of code will count the number of correct predictions made by a user
         leaderboard_data.append({
             'username': user.username,
             'total_predictions': total_predictions,
             'correct_predictions': correct_predictions,
-        })
+        }) # This line of code will append the user's username, total predictions and correct predictions to the leaderboard_data list
     leaderboard_data = sorted(leaderboard_data, key=lambda x: x['correct_predictions'], reverse=True)
     return render(request, 'predictions/leaderboard.html', {'leaderboard_data': leaderboard_data})
 
@@ -108,7 +108,7 @@ def edit_comment(request, slug, comment_id):
     """
     Allow users to edit their own comments.
     """
-    comment = get_object_or_404(Comment, id=comment_id)
+    comment = get_object_or_404(Comment, id=comment_id) 
     
     # Only handle POST requests
     if request.method == "POST":

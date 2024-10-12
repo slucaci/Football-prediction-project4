@@ -1,6 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 <div class="container mt-5 text-center">
   <h2 class="py-4 shadow-sm">Leaderboard</h2>
+  <!-- If logged in user has no predictions, it will show  a message instead. -->
   {% if leaderboard_data %}
   <table class="table table-striped mt-4">
     <thead class="thead-dark">
@@ -12,6 +13,7 @@
       </tr>
     </thead>
     <tbody>
+      <!-- This loops over the leaderboard_data, which is a list of dictionaries, where each dictionary contains information about a user such as username, total predictions, correct predictions -->
       {% for user_data in leaderboard_data %}
       <tr>
         <th scope="row">{{ forloop.counter }}</th>

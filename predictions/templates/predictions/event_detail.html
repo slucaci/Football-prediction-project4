@@ -25,6 +25,7 @@
     </div>
   </div>
 </div>
+<!-- This checks if there is an existing prediction for the event by the current user -->
 {% if existing_prediction %}
 <p class="alert alert-info text-center">
   You predicted: {{ existing_prediction.get_prediction_display }}
