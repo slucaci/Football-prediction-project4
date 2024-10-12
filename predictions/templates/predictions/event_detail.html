@@ -5,14 +5,17 @@
 <div class="masthead">
   <div class="container">
     <div class="row g-0">
-      <div class="col-md-6 masthead-text">
-        <!-- Event title goes in these h1 tags -->
-        <h1 class="post-title">{{ event.title }}</h1>
+      <div class="col-md-9 masthead-text">
+        <!-- Event title -->
+        <h2 class="post-title">{{ event.title }}</h2>
+        <!-- Event location and date -->
         <p>{{event.location}}</p>
-        <!-- Event author goes before the | the event's created date goes after -->
         <p class="post-subtitle">{{ event.date}}</p>
+        <!-- Event description -->
+        <p class="text-muted">{{ event.description | safe }}</p>
       </div>
-      <div class="d-none d-md-block col-md-6 masthead-image">
+
+      <div class="d-none d-md-block col-md-3 masthead-image">
         <img
           src="{{ event.featured_image.url }}"
           class="card-img-top scale"
@@ -42,13 +45,7 @@
 {% endif %}
 <div class="container">
   <div class="row">
-    <div class="col card mb-4 mt-3 left top">
-      <div class="card-body">
-        <!-- The Event content goes inside the card-text. -->
-        <!-- Use the | safe filter inside the template tags -->
-        <p class="card-text">{{ event.description | safe }}</p>
-      </div>
-    </div>
+    <div class="col card mb-4 mt-3 left top"></div>
   </div>
   <!-- Displaying count of comments -->
   <div class="container mt-4">

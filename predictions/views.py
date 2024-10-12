@@ -9,6 +9,7 @@ from .forms import PredictionForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
+from django.utils import timezone
 
 
 # Create your views here.
@@ -23,6 +24,7 @@ def user_predictions(request):
 
 class EventList(generic.ListView):
     queryset = Event.objects.filter(status=1)
+    queryset.filter(date__lt=timezone.now()).update(status=0)
     template_name = "predictions/index.html"
     paginate_by = 6
 
