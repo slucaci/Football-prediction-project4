@@ -14,7 +14,9 @@
       {% for prediction in predictions %}
       <tr>
         <td>
-          <a href="{% url 'event_detail' slug=prediction.event.slug %}"
+          <a
+            href="{% url 'event_detail' slug=prediction.event.slug %}"
+            target="_blank"
             >{{ prediction.event.title }}</a
           >
         </td>

@@ -1,6 +1,36 @@
 {% extends 'base.html' %} {% block content %}
-<div class="container mt-5">
-  <h1>{{ about_info.title }}</h1>
-  <p>{{ about_info.description | safe }}</p>
+
+<div class="container mt-8">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card p-4 shadow-lg">
+        <h1 class="text-center mb-4 display-4">{{ about_info.title }}</h1>
+        {% for info in about_info %}
+        <h2 class="text-center mt-4">{{ info.title }}</h2>
+        <p class="lead text-justify">{{ info.description | safe }}</p>
+        <hr />
+        {% endfor %}
+      </div>
+      <div class="text-center mt-4">
+        <a
+          target="_blank"
+          href="{% url 'leaderboard' %}"
+          class="btn btn-primary btn-lg"
+        >
+          Go to Leaderboard
+        </a>
+
+        <a
+          target="_blank"
+          href="{% url 'home' %}"
+          class="btn btn-primary btn-lg"
+        >
+          Start Predicting
+        </a>
+
+        <hr />
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}
