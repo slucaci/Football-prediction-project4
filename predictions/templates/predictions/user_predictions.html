@@ -8,6 +8,7 @@
         <th scope="col">Event</th>
         <th scope="col">Prediction</th>
         <th scope="col">Date</th>
+        <th scope="col">Result</th>
       </tr>
     </thead>
     <tbody>
@@ -22,6 +23,7 @@
         </td>
         <td>{{ prediction.get_prediction_display }}</td>
         <td>{{ prediction.created_on}}</td>
+        <td>{{ prediction.event.result }}</td>
       </tr>
       {% empty %}
       <tr>

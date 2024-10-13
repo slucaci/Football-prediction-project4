@@ -1,131 +1,201 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Football Predictions
 
-Welcome USER_NAME,
+Visit the site deployed on Heroku: [Football Predictions](https://django-project-sergiu-cac25ce07138.herokuapp.com/)
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+Welcome to **Football Predictions**! Test your football knowledge by predicting match results, compete against other users, and track your prediction accuracy on the leaderboard. This platform is designed for football enthusiasts who enjoy predicting match outcomes and participating in friendly competitions.
 
-You can safely delete this README.md file or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **June 18, 2024**
+## CONTENTS
 
-## Gitpod Reminders
+- [User Experience](#user-experience-ux)
+  - [User Stories](#user-stories)
+- [Design](#design)
+  - [Colour Scheme](#colour-scheme)
+  - [Typography](#typography)
+  - [Imagery](#imagery)
+  - [Features](#features)
+    - [The Admin Page](#the-admin-page)
+    - [The Home Page](#the-home-page)
+    - [The Past Predictions Page](#the-past-predictions-page)
+    - [The Leaderboard Page](#the-leaderboard-page)
+    - [The Match Detail Page](#the-match-detail-page)
+    - [The Comments Feature](#the-comments-feature)
+    - [Future Implementations](#future-implementations)
+  - [Accessibility](#accessibility)
+- [Technologies Used](#technologies-used)
+  - [Languages Used](#languages-used)
+  - [Frameworks, Libraries & Programs Used](#frameworks-libraries--programs-used)
+- [Deployment & Local Development](#deployment--local-development)
+  - [Deployment](#deployment)
+  - [Local Development](#local-development)
+    - [How to Fork](#how-to-fork)
+    - [How to Clone](#how-to-clone)
+- [Testing](#testing)
+- [Credits](#credits)
+  - [Code Used](#code-used)
+  - [Content](#content)
+  - [Acknowledgments](#acknowledgments)
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+## User Experience (UX)
 
-`python3 -m http.server`
+### User Stories
 
-A blue button should appear to click: _Make Public_,
+#### First-time visitor
 
-Another blue button should appear to click: _Open Browser_.
+- As a first-time visitor, I want to easily sign up, log in, and start making football predictions right away.
+- As a first-time visitor, I want to understand how the platform works and how my predictions are tracked and ranked.
 
-To run a backend Python file, type `python3 app.py` if your Python file is named `app.py`, of course.
+#### Frequent visitor
 
-A blue button should appear to click: _Make Public_,
+- As a returning user, I want to see my past predictions and track my progress on the leaderboard.
+- As a returning user, I want to participate in ongoing matches and predict their outcomes.
 
-Another blue button should appear to click: _Open Browser_.
+## Design
 
-By Default, Gitpod gives you superuser security privileges. Therefore, you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+For this project, I have chosen a modern, sports-themed design with an intuitive interface, aimed at providing an engaging experience for football fans.
 
-To log into the Heroku toolbelt CLI:
+### Colour Scheme
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+I have used the following colors:
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
+| Colour           | Hex                                                              |
+| ---------------- | ---------------------------------------------------------------- |
+| Primary Colour   | ![#004aad](https://via.placeholder.com/10/398e3d?text=+) #398e3d |
+| Secondary Colour | ![#e5e5e5](https://via.placeholder.com/10/0000FF?text=+) #0000FF |
+| Accent Colour    | ![#ffae00](https://via.placeholder.com/10/ffae00?text=+) #ffae00 |
 
-### Connecting your Mongo database
+### Typography
 
-- **Connect to Mongo CLI on a IDE**
-- navigate to your MongoDB Clusters Sandbox
-- click **"Connect"** button
-- select **"Connect with the MongoDB shell"**
-- select **"I have the mongo shell installed"**
-- choose **mongosh (2.0 or later)** for : **"Select your mongo shell version"**
-- choose option: **"Run your connection string in your command line"**
-- in the terminal, paste the copied code `mongo "mongodb+srv://<CLUSTER-NAME>.mongodb.net/<DBname>" --apiVersion 1 --username <USERNAME>`
-  - replace all `<angle-bracket>` keys with your own data
-- enter password _(will not echo **\*\*\*\*** on screen)_
+I used the **Roboto** font from Google Fonts for its clean and modern look, making the text easy to read.
 
-------
+![Roboto Font Example](https://font.download/images/thumb/12165/roboto-1110x492-e3ae09eead.jpg)
 
-## Release History
+### Imagery
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+The site features football-related imagery, including match visuals and team logos, to create a strong connection to the sport.
 
-**June 18, 2024,** Add Mongo back into template
+![Football Image](static/images/lazio-fiorentina.webp)
 
-**June 14, 2024,** Temporarily remove Mongo until the key issue is resolved
+### Features
 
-**May 28 2024:** Fix Mongo and Links installs
+#### The Admin Page
 
-**April 26 2024:** Update node version to 16
+The Admin page allows authorized administrators to manage the platform's content and user interactions efficiently. Admins can add, update, or delete football events, review and approve user comments. Events are automatically set to draft after their date has passed, ensuring that only upcoming or active events are visible to users.This page provides an intuitive interface to maintain the integrity of the platform, ensuring that only valid events and predictions are displayed. Additionally, admins can monitor user activity, making it easier to oversee and moderate content on the platform.
 
-**September 20 2023:** Update Python version to 3.9.17.
+![Home Image](static/images/adminpage.png)
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+#### The Home Page
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+The home page provides a clear call-to-action for users to sign up or log in, with an overview of upcoming matches and recent results. It serves as the central hub for accessing all features.
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+![Home Image](static/images/homepage.png)
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+#### The Past Predictions Page
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+The Past Predictions page allows users to view all their previous match predictions in one place.
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+![Home Image](static/images/predictionpage.png)
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+#### The Leaderboard Page
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+The leaderboard displays users ranked by their prediction accuracy, fostering a competitive atmosphere. Users can compare their performance with others.
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+![Leaderboard Image](static/images/leaderboard.png)
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+#### The Match Detail Page
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+Each match has its own detail page where users can view additional information, make predictions, and see other users' comments.
+![Prediction Image](static/images/prediction.png)
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+#### The Comments Feature
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+Users can leave comments on match pages to discuss the match or their predictions with other users. This adds a social element to the platform.
+![Comments Image](static/images/comments.png)
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+#### Future Implementations
 
-------
+**Real-Time Match Updates**:
 
-## FAQ about the uptime script
+- Integrate a live score API to provide real-time updates on ongoing matches. This would enhance user engagement by allowing users to follow the matches they’ve predicted.
 
-**Why have you added this script?**
+**Match/Event Notifications**:
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+- Implement a notification system to alert users about upcoming matches, when new events are available for prediction, or when the match results are in.
 
-**How will this affect me?**
+### Accessibility
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+1. **Alt Text for Images**: All images on the website include descriptive alt text for users with screen readers.
+2. **Semantic HTML**: Proper use of HTML5 semantic elements ensures that the site is accessible to users with assistive technologies.
+3. **Keyboard Navigation**: All interactive elements, including forms and buttons, are accessible via keyboard navigation.
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+## Technologies Used
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+#### Languages Used
 
-**So….?**
+- HTML
+- CSS
+- JavaScript
+- Python (Django framework)
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+#### Frameworks, Libraries & Programs Used
 
-**Can I opt out?**
+- **Django**: Backend framework to manage the server and handle user requests.
+- **Bootstrap**: For responsive and mobile-first web design.
+- **Google Fonts**: To import the Roboto font.
+- **Cloudinary**: For hosting images used on the site.
+- **GitHub**: For version control and deployment.
+- **Font Awesome**: For icons used throughout the site.
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+## Deployment & Local Development
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+### Deployment
 
-**Anything more?**
+The site is deployed using Heroku on - [Football Predictions](https://your-heroku-app-url)
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+Steps to deploy on Heroku:
 
----
+1. Create a new app on Heroku.
+2. Connect the Heroku app to your GitHub repository.
+3. Set up the necessary environment variables and buildpacks.
+4. Deploy the app from the Heroku dashboard.
 
-Happy coding!
+### Local Development
+
+#### How to Fork
+
+To fork the repository:
+
+1. Login to your GitHub Account.
+2. Go to: [Football-prediction](https://github.com/slucaci/Football-prediction-project4)
+3. Click the Fork button in the top right corner.
+
+#### How to Clone
+
+To clone the repository:
+
+1. Login to your GitHub Account.
+2. Go to: [Football-prediction](https://github.com/slucaci/Football-prediction-project4)
+3. On the repository's main page, find the green "Code" button located towards the right side of the page.
+4. Copy the URL provided in the textbox.
+5. Type 'git clone' into your terminal and paste the link. Press enter.
+
+## Testing
+
+Check the [TESTING.md](TESTING.md) file for a detailed summary of all testing procedures conducted.
+
+## Credits
+
+### Code used
+
+- Various tutorials from YouTube channels like [Bro Code](https://www.youtube.com/@BroCodez).
+- Code Institute’s learning material for understanding Django and implementing user authentication.
+- [Stack Overflow](https://stackoverflow.com/) was frequently used to troubleshoot issues and find solutions to common coding problems throughout the project.
+
+### Content
+
+- All match data is sourced from public football databases.
+- All images used on the site are hosted on Cloudinary.
+
+### Acknowledgments
+
+- Code Institute for providing the project framework.
+- Friends for testing and providing feedback during the development process.
