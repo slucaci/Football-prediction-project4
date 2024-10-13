@@ -35,43 +35,58 @@ def event_detail(request, slug):
     """This view displays the details of a single event."""
 
     queryset = Event.objects.filter(status=1) # This line of code will filter events that have a status of 1(Published)
-    event = get_object_or_404(queryset, slug=slug) 
+    event = get_object_or_404(queryset, slug=slug)
 
     comments = event.comments.all().order_by("-created_on") # This line of code will order the comments by the created_on field in descending order
     comment_count = event.comments.filter(active=True).count()
 
+    # Handle comment submission
     if request.method == "POST" and 'submit_comment' in request.POST:
-        comment_form = CommentForm(data=request.POST)
-        if comment_form.is_valid():
-            comment = comment_form.save(commit=False)
-            comment.author = request.user
-            comment.event = event
-            comment.save()
-            messages.success(request, 'Comment submitted and awaiting approval')
-            return redirect('event_detail', slug=event.slug)
+        if request.user.is_authenticated:
+            comment_form = CommentForm(data=request.POST)
+            if comment_form.is_valid():
+                comment = comment_form.save(commit=False)
+                comment.author = request.user
+                comment.event = event
+                comment.save()
+                messages.success(request, 'Comment submitted and awaiting approval')
+                return redirect('event_detail', slug=event.slug)
+        else:
+            messages.error(request, 'You must be logged in to submit a comment.')
+            return redirect('login')  # Redirect to login if not authenticated
+
     else:
         comment_form = CommentForm()
 
-    try:
-        existing_prediction = Prediction.objects.get(event=event, user=request.user) 
-        prediction_form = PredictionForm(instance=existing_prediction)
-    except Prediction.DoesNotExist:
-        existing_prediction = None
-        prediction_form = PredictionForm()
+    # Initialize prediction form
+    existing_prediction = None
+    prediction_form = PredictionForm()
+
+    # Handle prediction if user is authenticated
+    if request.user.is_authenticated:
+        try:
+            existing_prediction = Prediction.objects.get(event=event, user=request.user)
+            prediction_form = PredictionForm(instance=existing_prediction)
+        except Prediction.DoesNotExist:
+            existing_prediction = None
+            prediction_form = PredictionForm()
 
     if request.method == 'POST' and 'submit_prediction' in request.POST:
-        if existing_prediction:
-            prediction_form = PredictionForm(request.POST, instance=existing_prediction) 
+        if request.user.is_authenticated:
+            if existing_prediction:
+                prediction_form = PredictionForm(request.POST, instance=existing_prediction)
+            else:
+                prediction_form = PredictionForm(request.POST)
+            if prediction_form.is_valid():
+                prediction = prediction_form.save(commit=False)
+                prediction.user = request.user
+                prediction.event = event
+                prediction.save()
+                messages.success(request, 'Your prediction has been saved.')
+                return redirect('event_detail', slug=event.slug)
         else:
-            prediction_form = PredictionForm(request.POST)
-
-        if prediction_form.is_valid():
-            prediction = prediction_form.save(commit=False) 
-            prediction.user = request.user
-            prediction.event = event
-            prediction.save()
-            messages.success(request, 'Your prediction has been saved.')
-            return redirect('event_detail', slug=event.slug)
+            messages.error(request, 'You must be logged in to make a prediction.')
+            return redirect('login')
 
     return render(
         request,
