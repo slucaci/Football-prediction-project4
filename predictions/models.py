@@ -36,8 +36,8 @@ class Comment(models.Model):
     """This model represents a comment on an event."""
     event = models.ForeignKey('Event', on_delete=models.CASCADE, related_name="comments")
     author = models.ForeignKey(User, on_delete=models.CASCADE,blank=True, null=True)
-    name = models.CharField(max_length=80, blank=True)
-    email = models.EmailField(max_length=80, blank=True)
+    name = models.CharField(max_length=80)
+    email = models.EmailField(max_length=80)
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     active = models.BooleanField(default=False)
